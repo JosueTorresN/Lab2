@@ -54,23 +54,27 @@ Para mejorar la experiencia de usuarios con diferentes capacidades se aplicaron 
 ### ✔️ W3C Validator
 - El archivo `index.html` fue validado con [W3C Validator](https://validator.w3.org/).  
 - **Resultado:** El documento no presentó errores graves.  
-- Advertencias menores: Ninguna crítica al uso de etiquetas semánticas.  
+- Advertencias menores: El documento presentó un error relacionado con el atributo `border` en la tabla.  
 
-(Captura aquí en la entrega final)
+![Error w3.org](./error.png)
 
 ---
 
 ### ✔️ Lighthouse
 Se ejecutó una auditoría con **Lighthouse** en las categorías de **Accessibility** y **SEO**.  
 
-- **Accesibilidad:** 100/100  
-- **SEO:** 95/100 (sugerencia: incluir metadatos adicionales como `description` y `lang` en más elementos).  
+- **Accesibilidad:** 96/100  
+- **SEO:** 54/100 (Reporte con advertencia crítica).
+![Error lighthouse](./error2.png)
 
-(Captura aquí en la entrega final)
+**Problema detectado**
 
-**Plan de mejoras:**
-- Añadir más metainformación para SEO (keywords, descripción extendida).  
-- Incluir un sitemap.xml para optimizar indexación en buscadores.  
+**Causa probable:**  
+Netlify agrega la cabecera `x-robots-tag: noindex` en algunos despliegues (principalmente URLs temporales o sin configuración de dominio personalizado).  
+
+**Corrección propuesta:**  
+
+- Configurar un dominio personalizado en Netlify (o cambiar la configuración del deploy) para permitir indexación.
 
 ---
 
@@ -78,23 +82,15 @@ Se ejecutó una auditoría con **Lighthouse** en las categorías de **Accessibil
 
 El proyecto fue versionado en GitHub y desplegado en **Netlify**.  
 
-- **Repositorio en GitHub:** [URL del repositorio]  
-- **Sitio en Netlify:** [https://techfuture2025.netlify.app](https://techfuture2025.netlify.app)  
+- **Repositorio en GitHub:** [Lab2](https://github.com/JosueTorresN/Lab2.git) 
+- **Sitio en Netlify:** [https://68a1453c2f566449f087253e--lab2tec.netlify.app](https://68a1453c2f566449f087253e--lab2tec.netlify.app)  
 
 ---
 
 ## **Conclusiones**
 
 - Se logró implementar correctamente una página semántica con accesibilidad básica y contenido variado.  
-- La validación en W3C y los resultados de Lighthouse demostraron que el sitio cumple estándares de calidad y accesibilidad.  
+- La validación en W3C y los resultados de Lighthouse demostraron que el sitio pese a pequeños errores, cumple en gran medida los estándares de calidad y accesibilidad.  
 - El despliegue en Netlify permite compartir el proyecto fácilmente y garantiza integración continua con GitHub.  
-
----
-
-## **Evidencias**
-
-📷 Capturas de validación W3C  
-📷 Capturas de resultados Lighthouse
-📷 Captura del despliegue en Netlify  
 
 ---
