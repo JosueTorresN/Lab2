@@ -94,7 +94,7 @@ El proyecto fue versionado en GitHub y desplegado en **Netlify**.
 ## **Evidencias**
 
 📷 Capturas de validación W3C  
-📷 Capturas de resultados Lighthouse  
+📷 Capturas de resultados Lighthouse
 📷 Captura del despliegue en Netlify  
 
 ---
