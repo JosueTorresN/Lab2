@@ -75,6 +75,7 @@ Netlify agrega la cabecera `x-robots-tag: noindex` en algunos despliegues (princ
 **Corrección propuesta:**  
 
 - Configurar un dominio personalizado en Netlify (o cambiar la configuración del deploy) para permitir indexación.
+- Se añadió la etiqueta `<meta name="description">` en el `<head>` con un resumen claro del sitio.
 
 ---
 
