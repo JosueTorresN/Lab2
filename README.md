@@ -1,97 +1,81 @@
-# **Laboratorio 2 – IC8057: Introducción al Desarrollo de Páginas Web**
+# Laboratorio 3 – IC8057: Introducción al Desarrollo de Páginas Web
 
-Nombre: Josué Torres Narvaez  
-Carné: 2018084162  
-Curso: IC-8057 – Introducción al Desarrollo de Páginas Web  
-Fecha: 16/08/2025  
-
----
-
-## **Título del proyecto**
-
-**TechFuture 2025 – Evento Tecnológico**  
-
-Este proyecto consiste en el desarrollo de una página web estática para un evento ficticio de tecnología. El objetivo es aplicar **estructura semántica de HTML5, accesibilidad, validación y despliegue en Netlify**, siguiendo las buenas prácticas vistas en clase.
+**Nombre:** Josué Torres Narvaez  
+**Carné:** 2018084162  
+**Curso:** IC-8057 – Introducción al Desarrollo de Páginas Web  
+**Fecha:** 24/08/2025  
 
 ---
 
-## **Estructura semántica aplicada**
+## Título del proyecto
 
-Se utilizó una estructura completa y organizada de etiquetas HTML5 con fines semánticos y de accesibilidad:
+### TechFuture 2025 – Evento Tecnológico
 
-- `<header>`: Título principal del evento y menú de navegación.  
-- `<nav>`: Menú con enlaces internos a cada sección.  
-- `<main>`: Contenido central del sitio.  
-- `<section>`: Organización del contenido en 5 bloques principales (Agenda, Expositores, Registro, Ubicación, Patrocinadores).  
-- `<article>`: Información individual de expositores.  
-- `<figure>` + `<figcaption>`: Imagen con descripción asociada.  
-- `<aside>`: Información adicional sobre patrocinadores.  
-- `<footer>`: Información de derechos reservados.  
-
-Además, se implementaron elementos de **contenido enriquecido**:  
-
-- Listas ordenadas `<ol>` y no ordenadas `<ul>`.  
-- Tabla `<table>` con `<thead>`, `<tbody>`.  
-- Cita `<blockquote>`.  
-- Formulario `<form>` con campos de texto, correo, select, checkboxes y botón de envío.  
+Este proyecto consiste en el desarrollo de una página web estática, refinando la del Laboratorio 2, para aplicar conceptos avanzados de **CSS3** como *selectores, pseudo-clases, el modelo de caja, posicionamiento, Flexbox y Grid*, siguiendo las buenas prácticas vistas en clase.
 
 ---
 
-## **Accesibilidad aplicada**
+## Estructura del proyecto y CSS
 
-Para mejorar la experiencia de usuarios con diferentes capacidades se aplicaron los siguientes elementos:
+El proyecto se organizó en una nueva rama llamada `lab3-selectores-boxmodel` y se crearon los siguientes archivos CSS, enlazados en el orden correcto:
 
-- `alt` en **todas las imágenes**.  
-- `tabindex="0"` en una imagen y `tabindex="-1"` en otra.  
-- Uso de `<figure>` y `<figcaption>` para describir imágenes relevantes.  
-- `aria-label` en el botón de envío del formulario.  
-- Enlaces con **texto claro y descriptivo** (se evitó “haz clic aquí”).  
-
----
-
-## **Validación y análisis**
-
-### ✔️ W3C Validator
-- El archivo `index.html` fue validado con [W3C Validator](https://validator.w3.org/).  
-- **Resultado:** El documento no presentó errores graves.  
-- Advertencias menores: El documento presentó un error relacionado con el atributo `border` en la tabla.  
-
-![Error w3.org](./error.png)
+- **styles/base.css:** Contiene la propiedad `box-sizing: border-box`, variables CSS y estilos tipográficos globales.  
+- **styles/layout.css:** Contiene la maquetación de la página, incluyendo el uso de `display: flex` para la navegación y `display: grid` para el listado de expositores.  
+- **styles/components.css:** Estilos para componentes reutilizables como `.btn`, `.card` y el control de `overflow`.  
+- **styles/overrides.css:** Utilizado para demostrar la especificidad con la regla `!important`.  
 
 ---
 
-### ✔️ Lighthouse
-Se ejecutó una auditoría con **Lighthouse** en las categorías de **Accessibility** y **SEO**.  
+## Selectores y Pseudo-clases aplicadas
 
-- **Accesibilidad:** 96/100  
-- **SEO:** 54/100 (Reporte con advertencia crítica).
-![Error lighthouse](./error2.png)
+Se implementaron los siguientes selectores y pseudo-clases, como se indica en la rúbrica:
 
-**Problema detectado**
+- **Selectores de tipo:** `header`, `nav`, `section`, `img` y otros.  
+- **Selectores de clase:** `.card` para los expositores y `.btn` para el botón de envío.  
+- **Selectores de ID:** `#agenda`, `#expositores`, `#registro`, `#ubicacion` y `#patrocinadores`.  
+- **Selectores de atributo:** `a[target="_blank"]`, `img[alt]`, `input[type="email"]`.  
 
-**Causa probable:**  
-Netlify agrega la cabecera `x-robots-tag: noindex` en algunos despliegues (principalmente URLs temporales o sin configuración de dominio personalizado).  
+**Combinadores:**
 
-**Corrección propuesta:**  
+- **Descendiente:** `.card p` → estilizar los párrafos dentro de las tarjetas.  
+- **Hijo directo:** `header > nav` → estilizar la navegación.  
+- **Adyacente:** `nav a + a` → agregar un separador entre enlaces de navegación.  
+- **Hermanos:** `ol li ~ li` → estilizar los elementos de la lista de patrocinadores a partir del segundo.  
 
-- Configurar un dominio personalizado en Netlify (o cambiar la configuración del deploy) para permitir indexación.
-- Se añadió la etiqueta `<meta name="description">` en el `<head>` con un resumen claro del sitio.
+**Pseudo-clases:**
 
----
-
-## **Despliegue en Netlify**
-
-El proyecto fue versionado en GitHub y desplegado en **Netlify**.  
-
-- **Repositorio en GitHub:** [Lab2](https://github.com/JosueTorresN/Lab2.git) 
-- **Sitio en Netlify:** [https://68a1453c2f566449f087253e--lab2tec.netlify.app](https://68a1453c2f566449f087253e--lab2tec.netlify.app)  
+- **De estado:** `:hover`, `:active`, `:focus-visible` → botón de envío.  
+- **Estructurales:** `:nth-child(odd)` para colorear filas alternas en la tabla, `:last-child` para el último elemento y `:not()` para excluir el primer elemento de la lista de ubicación.  
 
 ---
 
-## **Conclusiones**
+## Demostración de Especificidad
 
-- Se logró implementar correctamente una página semántica con accesibilidad básica y contenido variado.  
-- La validación en W3C y los resultados de Lighthouse demostraron que el sitio pese a pequeños errores, cumple en gran medida los estándares de calidad y accesibilidad.  
-- El despliegue en Netlify permite compartir el proyecto fácilmente y garantiza integración continua con GitHub.  
+- Se utilizó una regla con `!important` en `overrides.css` para sobrescribir el color de fondo del badge **"Experto TOP"** en las tarjetas de expositores.  
+- Se agregó un estilo en línea en el HTML del título de **Expositores** (`<h2 style="...">`), que convive con su clase, demostrando su alta especificidad.  
 
 ---
+
+## Otros conceptos aplicados
+
+- **Box Model:** Se definió `box-sizing: border-box` globalmente, con márgenes y paddings adecuados. Se observó el colapso de márgenes entre el título `h2` y las tarjetas `.card`.  
+- **Overflow:** Se implementó `overflow: auto` en un párrafo de la tarjeta del expositor.  
+- **Flexbox y Grid:** `display: flex` para la barra de navegación y `display: grid` con `repeat()` y `minmax()` para los expositores.  
+- **Positioning:** `position: relative` en el contenedor `.card` y `position: absolute` en el badge para ubicarlo en la esquina superior derecha.  
+
+---
+
+## Despliegue en Netlify
+
+El proyecto fue versionado en una rama dedicada de GitHub y se creó un nuevo deploy en Netlify para esta rama.
+
+- **Repositorio en GitHub:** [JosueTorresN/Lab2](https://github.com/JosueTorresN/Lab2.git) (rama `lab3-selectores-boxmodel`)  
+- **Sitio en Netlify:** [Deploy en Netlify](https://tu-nuevo-deploy.netlify.app) *(reemplazar con el enlace correcto)*  
+
+---
+
+## Conclusiones
+
+- Se lograron aplicar correctamente las técnicas avanzadas de **CSS3**, demostrando un control preciso sobre la presentación visual del sitio.  
+- La organización en múltiples archivos CSS facilita la escalabilidad y el mantenimiento del proyecto.  
+- El uso de **selectores complejos y pseudo-clases** permite un estilo más dinámico y eficiente, reduciendo la necesidad de clases extra en el HTML.  

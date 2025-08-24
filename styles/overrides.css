@@ -1,0 +1,3 @@
+.badge {
+    background-color: #fc8181 !important; /* Rojo, sobrescribe el verde del components.css */
+}

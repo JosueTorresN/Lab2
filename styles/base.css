@@ -1,0 +1,62 @@
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: 'Inter', sans-serif;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+/* 2. Variables CSS (propiedades personalizadas) */
+:root {
+    --color-primary: #1a202c; /* Negro carbón */
+    --color-secondary: #4a5568; /* Gris oscuro */
+    --color-accent: #3182ce; /* Azul vibrante */
+    --color-text-light: #f7fafc; /* Blanco casi total */
+    --font-heading: 'Inter', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+}
+
+/* 3. Estilos básicos del cuerpo y tipografía */
+body {
+    background-color: var(--color-text-light);
+    color: var(--color-primary);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+/* Selectores de tipo */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--color-primary);
+    margin-top: 0;
+    margin-bottom: var(--spacing-md);
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: var(--spacing-md);
+}
+
+a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Reseteo ligero para listas */
+ul, ol {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
