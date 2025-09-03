@@ -1,0 +1,102 @@
+/* Selectores de tipo: header y nav */
+header {
+    background-color: var(--color-primary);
+    padding: var(--spacing-lg);
+    color: var(--color-text-light);
+    text-align: center;
+}
+
+/* Combinador 'hijo directo': header > nav */
+/* Se aplica flexbox para centrar y espaciar los elementos del nav */
+header > nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+header > nav ul {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+header > nav a {
+    color: var(--color-text-light);
+    font-weight: 600;
+}
+
+/* Selectores de tipo: section */
+section {
+    padding: var(--spacing-lg);
+    max-width: 900px;
+    margin: var(--spacing-lg) auto;
+}
+
+/* Selectores combinadores */
+/* Combinador 'adyacente': nav a + a */
+/* Estilos para todos los enlaces del nav que son precedidos por otro enlace a */
+header nav a + a {
+    padding-left: var(--spacing-sm);
+    border-left: 1px solid var(--color-secondary);
+}
+
+/* Combinador 'hermanos': li ~ li */
+/* Estilos para todos los elementos li que son precedidos por otro li */
+#patrocinadores ol li ~ li {
+    margin-top: var(--spacing-sm);
+}
+
+/* Combinador 'descendiente': .card p */
+/* Estilos para todos los párrafos dentro de un elemento con la clase .card */
+.card p {
+    color: var(--color-secondary);
+    font-size: 0.95rem;
+}
+
+/* Uso de display: grid para la sección de expositores */
+.expositores-grid {
+    display: grid;
+    /* Usa repeat() y minmax() para una cuadrícula adaptable y responsive */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    justify-content: center;
+}
+
+/* Estilos de tipo para elementos de tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: var(--spacing-md);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+table, th, td {
+    border: 1px solid #e2e8f0;
+}
+
+th, td {
+    padding: var(--spacing-sm) var(--spacing-md);
+    text-align: left;
+}
+
+/* Selectores de atributo */
+/* Estilo para cualquier enlace que se abra en una nueva pestaña */
+a[target="_blank"] {
+    font-weight: bold;
+    color: var(--color-accent);
+}
+
+/* Estilo para imágenes con el atributo alt */
+img[alt] {
+    border-radius: var(--spacing-sm);
+}
+
+/* Estilo para el input de tipo email */
+input[type="email"] {
+    border: 2px solid var(--color-accent);
+}
+
+/* Estilo para enlaces que empiezan con "https://" */
+a[href^="https://"] {
+    text-decoration: none;
+}

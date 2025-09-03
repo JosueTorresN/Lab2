@@ -1,133 +1,188 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="TechFuture 2025 es un evento tecnológico con conferencias, talleres y expertos en innovación, ciberseguridad e inteligencia artificial.">
-  <title>TechFuture 2025 - Evento Tecnológico</title>
+    <!-- Configuración del documento y metadatos -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TechFuture 2025 es un evento tecnológico con conferencias, talleres y expertos en innovación, ciberseguridad e inteligencia artificial.">
+    <title>TechFuture 2025 - Evento Tecnológico</title>
+
+    <!-- Enlace a los archivos CSS, siguiendo el orden de la rúbrica (base, layout, components, overrides) -->
+    <!-- Se usan enlaces locales como si estuvieran en una carpeta 'styles' -->
+    <link rel="stylesheet" href="./styles/base.css">
+    <link rel="stylesheet" href="./styles/layout.css">
+    <link rel="stylesheet" href="./styles/components.css">
+    <link rel="stylesheet" href="./styles/overrides.css">
+
+    <!-- Enlaces para la fuente y Tailwind CSS (para un mejor aspecto visual) -->
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-  <header>
-    <h1>TechFuture 2025</h1>
-    <nav aria-label="Navegación principal">
-      <ul>
-        <li><a href="#agenda">Agenda</a></li>
-        <li><a href="#expositores">Expositores</a></li>
-        <li><a href="#registro">Registro</a></li>
-        <li><a href="#ubicacion">Ubicación</a></li>
-        <li><a href="#patrocinadores">Patrocinadores</a></li>
-      </ul>
-    </nav>
-  </header>
+    <header>
+        <!-- Selector de tipo: header -->
+        <h1>TechFuture 2025</h1>
+        <!-- Combinador 'hijo directo': header > nav -->
+        <nav aria-label="Navegación principal">
+            <!-- Uso de display: flex para alinear los enlaces -->
+            <ul>
+                <li><a href="#agenda">Agenda</a></li>
+                <!-- Combinador 'adyacente': nav a + a -->
+                <li><a href="#expositores">Expositores</a></li>
+                <li><a href="#registro">Registro</a></li>
+                <li><a href="#ubicacion">Ubicación</a></li>
+                <li><a href="#patrocinadores">Patrocinadores</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <main>
-    <section id="agenda">
-      <h2>Agenda del Evento</h2>
-      <p>Descubre las actividades programadas para TechFuture 2025.</p>
-      
-      <table border="1">
-        <thead>
-          <tr>
-            <th>Hora</th>
-            <th>Actividad</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>09:00</td>
-            <td>Conferencia Inaugural</td>
-          </tr>
-          <tr>
-            <td>11:00</td>
-            <td>Panel de Innovación</td>
-          </tr>
-          <tr>
-            <td>14:00</td>
-            <td>Taller de Desarrollo Web</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+    <main class="container">
+        <!-- Uso de ID: #agenda -->
+        <section id="agenda">
+            <!-- Selector de tipo: h2 -->
+            <h2>Agenda del Evento</h2>
+            <p>Descubre las actividades programadas para TechFuture 2025.</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <!-- Uso de :first-child y :last-child en la primera fila -->
+                        <th>Hora</th>
+                        <th>Actividad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Uso de :nth-child(odd) para filas impares -->
+                    <tr>
+                        <td>09:00</td>
+                        <td>Conferencia Inaugural</td>
+                    </tr>
+                    <tr>
+                        <td>11:00</td>
+                        <td>Panel de Innovación</td>
+                    </tr>
+                    <tr>
+                        <td>14:00</td>
+                        <td>Taller de Desarrollo Web</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
 
-    <section id="expositores">
-      <h2>Expositores</h2>
-      <article>
-        <h3>Dra. Ana Pérez Buñiga</h3>
-        <figure>
-          <img src="./expositora1.png" alt="Retrato de la Dra. Ana Pérez, experta en inteligencia artificial" tabindex="0">
-          <figcaption>Especialista en Inteligencia Artificial</figcaption>
-        </figure>
-        <blockquote>
-          "La inteligencia artificial no reemplaza al ser humano, lo potencia."
-        </blockquote>
-      </article>
-      <article>
-        <h3>Ing. Juan Gómez</h3>
-        <img src="expositor2.png" alt="Retrato del Ing. Juan Gómez, experto en ciberseguridad" tabindex="-1">
-        <p>Experto en Ciberseguridad y Protección de Datos.</p>
-      </article>
-    </section>
+        <!-- Uso de ID: #expositores -->
+        <section id="expositores">
+            <!-- Uso de estilo en línea para demostrar la especificidad -->
+            <h2 class="titulo-seccion" style="margin-bottom: 24px;">Expositores</h2>
+            <p>Conoce a los expertos que nos acompañarán.</p>
+            
+            <!-- Uso de display: grid para organizar las tarjetas -->
+            <div class="expositores-grid">
+                <!-- Uso de clase reutilizable: .card -->
+                <article class="card">
+                    <h3>Dra. Ana Pérez Buñiga</h3>
+                    <figure>
+                        <!-- Selector de atributo: img[alt] -->
+                        <img src="expositora1.png" alt="Retrato de la Dra. Ana Pérez, experta en inteligencia artificial">
+                        <figcaption>Especialista en Inteligencia Artificial</figcaption>
+                    </figure>
+                    <blockquote>
+                        "La inteligencia artificial no reemplaza al ser humano, lo potencia."
+                    </blockquote>
+                    <!-- Uso de position: relative para el contenedor y position: absolute para el badge -->
+                    <div class="card-content-wrapper">
+                        <!-- El texto es largo para demostrar overflow -->
+                        <p class="long-text">
+                            La Dra. Ana Pérez Buñiga es una reconocida líder en el campo de la inteligencia artificial. Su investigación se centra en la aplicación de modelos de aprendizaje automático para resolver problemas complejos en la medicina y la biología. Su charla abordará cómo la IA no debe verse como un reemplazo, sino como una herramienta poderosa para potenciar las capacidades humanas y abrir nuevas fronteras de la innovación y la creatividad.
+                        </p>
+                    </div>
+                    <!-- Elemento decorativo para demostrar el uso de !important -->
+                    <span class="badge">Experto TOP</span>
+                </article>
+                <article class="card">
+                    <h3>Ing. Juan Gómez</h3>
+                    <!-- Selector de atributo: img[alt] -->
+                    <img src="expositor2.png" alt="Retrato del Ing. Juan Gómez, experto en ciberseguridad">
+                    <p>Experto en Ciberseguridad y Protección de Datos.</p>
+                </article>
+            </div>
+        </section>
 
-    <section id="registro">
-      <h2>Registro</h2>
-      <p>Inscríbete para asegurar tu lugar en TechFuture 2025.</p>
-      <form action="#" method="post">
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required>
+        <!-- Uso de ID: #registro -->
+        <section id="registro">
+            <h2>Registro</h2>
+            <p>Inscríbete para asegurar tu lugar en TechFuture 2025.</p>
+            <form action="#" method="post">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
 
-        <label for="correo">Correo electrónico:</label>
-        <input type="email" id="correo" name="correo" required>
+                <label for="correo">Correo electrónico:</label>
+                <!-- Selector de atributo: input[type="email"] -->
+                <input type="email" id="correo" name="correo" required>
 
-        <label for="tipo">Tipo de entrada:</label>
-        <select id="tipo" name="tipo">
-          <option value="general">General</option>
-          <option value="estudiante">Estudiante</option>
-          <option value="vip">VIP</option>
-        </select>
+                <label for="tipo">Tipo de entrada:</label>
+                <select id="tipo" name="tipo">
+                    <option value="general">General</option>
+                    <option value="estudiante">Estudiante</option>
+                    <option value="vip">VIP</option>
+                </select>
 
-        <fieldset>
-          <legend>Intereses:</legend>
-          <input type="checkbox" id="ia" name="interes" value="ia">
-          <label for="ia">Inteligencia Artificial</label>
-          <input type="checkbox" id="web" name="interes" value="web">
-          <label for="web">Desarrollo Web</label>
-        </fieldset>
+                <fieldset>
+                    <legend>Intereses:</legend>
+                    <input type="checkbox" id="ia" name="interes" value="ia">
+                    <label for="ia">Inteligencia Artificial</label>
+                    <input type="checkbox" id="web" name="interes" value="web">
+                    <label for="web">Desarrollo Web</label>
+                </fieldset>
 
-        <button type="submit" aria-label="Enviar formulario de registro">Enviar</button>
-      </form>
-    </section>
+                <!-- Uso de clase reutilizable: .btn y pseudo-clases de estado -->
+                <button type="submit" class="btn" aria-label="Enviar formulario de registro">Enviar</button>
+            </form>
+        </section>
 
-    <section id="ubicacion">
-      <h2>Ubicación</h2>
-      <p>El evento se llevará a cabo en el Centro de Convenciones de San José.</p>
-      <ul>
-        <li>Dirección: Boulevard principal, San José</li>
-        <li>Transporte público cercano</li>
-        <li>Estacionamiento gratuito</li>
-      </ul>
-      <p>
-        <a href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer">
-          Ver en Google Maps
-        </a>
-      </p>
-    </section>
+        <!-- Uso de ID: #ubicacion -->
+        <section id="ubicacion">
+            <h2>Ubicación</h2>
+            <figure class="ubicacion-imagen">
+                <img src="./centro.webp" alt="Centro de Convenciones de San José">
+                <figcaption>Centro de Convenciones de San José</figcaption>
+            </figure>
+            <p>El evento se llevará a cabo en el Centro de Convenciones de San José.</p>
+            <ul class="ubicacion-lista">
+                <li>Dirección: Boulevard principal, San José</li>
+                <li>Transporte público cercano</li>
+                <li>Estacionamiento gratuito</li>
+            </ul>
+            <p>
+                <!-- Selector de atributo: a[target="_blank"] y a[href^="https://"] -->
+                <a href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer">
+                    Ver en Google Maps
+                </a>
+            </p>
+        </section>
 
-    <section id="patrocinadores">
-      <h2>Patrocinadores</h2>
-      <p>Agradecemos a nuestros aliados:</p>
-      <ol>
-        <li>TechCorp</li>
-        <li>InnovaLabs</li>
-        <li>FutureSoft</li>
-      </ol>
-      <aside>
-        <p>¿Quieres ser patrocinador? Escríbenos a <a href="mailto:contacto@techfuture.com">contacto@techfuture.com</a></p>
-      </aside>
-    </section>
-  </main>
+        <!-- Uso de ID: #patrocinadores -->
+        <section id="patrocinadores">
+            <h2>Patrocinadores</h2>
+            <p>Agradecemos a nuestros aliados:</p>
+            <ol>
+                <li>
+                    <!-- TechCorp  -->
+                    <figure class="logo">
+                        <img src="./tech_corp.png" alt="Logo de TechCorp">
+                        <figcaption>TechCorp</figcaption>
+                    </figure>
+                </li>
+                <!-- Combinador 'hermanos': li ~ li -->
+                <li>InnovaLabs</li>
+                <li>FutureSoft</li>
+            </ol>
+            <aside>
+                <p>¿Quieres ser patrocinador? Escríbenos a <a href="mailto:contacto@techfuture.com">contacto@techfuture.com</a></p>
+            </aside>
+        </section>
+    </main>
 
-  <footer>
-    <p>&copy; 2025 TechFuture. Todos los derechos reservados.</p>
-  </footer>
+    <footer>
+        <p>&copy; 2025 TechFuture. Todos los derechos reservados.</p>
+    </footer>
 </body>
 </html>
