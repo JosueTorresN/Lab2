@@ -1,62 +1,113 @@
+/* ...existing code... */
+
+/* 4. Responsive Typography */
 html {
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-    font-family: 'Inter', sans-serif;
+    font-size: 16px;
 }
 
-*, *:before, *:after {
-    box-sizing: inherit;
+@media (max-width: 900px) {
+    html {
+        font-size: 15px;
+    }
 }
 
-/* 2. Variables CSS (propiedades personalizadas) */
-:root {
-    --color-primary: #1a202c; /* Negro carbón */
-    --color-secondary: #4a5568; /* Gris oscuro */
-    --color-accent: #3182ce; /* Azul vibrante */
-    --color-text-light: #f7fafc; /* Blanco casi total */
-    --font-heading: 'Inter', sans-serif;
-    --font-body: 'Inter', sans-serif;
-    --spacing-xs: 4px;
-    --spacing-sm: 8px;
-    --spacing-md: 16px;
-    --spacing-lg: 24px;
+@media (max-width: 600px) {
+    html {
+        font-size: 14px;
+    }
 }
 
-/* 3. Estilos básicos del cuerpo y tipografía */
+/* 5. Responsive Body Padding */
 body {
-    background-color: var(--color-text-light);
-    color: var(--color-primary);
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
+    /* ...existing code... */
+    padding: var(--spacing-md);
 }
 
-/* Selectores de tipo */
-h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading);
-    color: var(--color-primary);
-    margin-top: 0;
-    margin-bottom: var(--spacing-md);
+@media (max-width: 600px) {
+    body {
+        padding: var(--spacing-sm);
+    }
 }
 
-p {
-    margin-top: 0;
-    margin-bottom: var(--spacing-md);
+/* 6. Responsive Headings */
+h1 {
+    font-size: 2.5rem;
+}
+h2 {
+    font-size: 2rem;
+}
+h3 {
+    font-size: 1.5rem;
+}
+h4 {
+    font-size: 1.25rem;
+}
+h5 {
+    font-size: 1rem;
+}
+h6 {
+    font-size: 0.875rem;
 }
 
-a {
-    color: var(--color-accent);
-    text-decoration: none;
-    transition: color 0.3s ease;
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2rem;
+    }
+    h2 {
+        font-size: 1.5rem;
+    }
+    h3 {
+        font-size: 1.25rem;
+    }
+    h4 {
+        font-size: 1.1rem;
+    }
+    h5 {
+        font-size: 0.95rem;
+    }
+    h6 {
+        font-size: 0.85rem;
+    }
 }
 
-a:hover {
-    text-decoration: underline;
+/* 7. Responsive Images and Media */
+img, video, iframe {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
-/* Reseteo ligero para listas */
+/* 8. Responsive Lists */
 ul, ol {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
+    padding-left: var(--spacing-md);
+}
+
+@media (max-width: 600px) {
+    ul, ol {
+        padding-left: var(--spacing-sm);
+    }
+}
+
+/* 9. Responsive Containers (utility class) */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: var(--spacing-lg);
+    padding-right: var(--spacing-lg);
+}
+
+@media (max-width: 900px) {
+    .container {
+        max-width: 100%;
+        padding-left: var(--spacing-md);
+        padding-right: var(--spacing-md);
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding-left: var(--spacing-sm);
+        padding-right: var(--spacing-sm);
+    }
 }
