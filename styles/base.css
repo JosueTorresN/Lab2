@@ -1,3 +1,9 @@
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: 'Inter', sans-serif;
+}
+
 *, *:before, *:after {
     box-sizing: inherit;
 }
@@ -16,12 +22,13 @@
     --spacing-lg: 24px;
 }
 
-/* 4. Responsive Typography */
-html {
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-    font-family: 'Inter', sans-serif;
-    font-size: 16px;
+/* 3. Estilos básicos del cuerpo y tipografía */
+body {
+    background-color: var(--color-text-light);
+    color: var(--color-primary);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
 }
 
 /* Selectores de tipo */
@@ -51,50 +58,45 @@ a:hover {
 ul, ol {
     margin: 0;
     padding: 0;
-    list-style: none;
+    list-style-type: none;
 }
 
-li {
-    margin-bottom: var(--spacing-sm);
-}
-
-/* Contenedor principal para centrar el contenido */
-.container {
-    max-width: 90%;
-    margin: 0 auto;
-    padding: var(--spacing-sm);
-}
-
-/* 5. Responsive Headings */
-h1 {
-    font-size: 2.5rem;
-}
-h2 {
-    font-size: 2rem;
-}
-h3 {
-    font-size: 1.5rem;
-}
-h4 {
-    font-size: 1.25rem;
-}
-h5 {
-    font-size: 1rem;
-}
-h6 {
-    font-size: 0.875rem;
-}
-
-/* 6. Responsive Images and Media */
-img, video, iframe {
+img, iframe, table {
     max-width: 100%;
     height: auto;
-    display: block;
 }
 
-/* Responsive tables to avoid horizontal scroll */
-table {
-    max-width: 100%;
-    overflow-x: auto;
-    display: block;
+/* To make the table responsive, you might need to adjust its display on smaller screens */
+@media (max-width: 480px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    tr { border: 1px solid #ccc; }
+
+    td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+    }
+
+    td:before {
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+    }
+
+    /* Labeling the table data */
+    #agenda td:nth-of-type(1):before { content: "Hora"; }
+    #agenda td:nth-of-type(2):before { content: "Actividad"; }
 }

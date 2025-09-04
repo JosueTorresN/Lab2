@@ -6,87 +6,23 @@ header {
     text-align: center;
 }
 
-/* Hero section */
-.hero {
+/* Combinador 'hijo directo': header > nav */
+/* Se aplica flexbox para centrar y espaciar los elementos del nav */
+header > nav {
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    height: 300px;
-    position: relative;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    padding: var(--spacing-md);
-}
-
-.hero-content {
-    z-index: 10;
-}
-
-/* Menú hamburguesa */
-.menu-toggle {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: var(--spacing-sm);
-    display: block; /* Visible en móvil */
-}
-
-.hamburger {
-    display: block;
-    width: 24px;
-    height: 3px;
-    background-color: var(--color-text-light);
-    position: relative;
-    transition: transform 0.3s;
-}
-
-.hamburger::before,
-.hamburger::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 3px;
-    background-color: var(--color-text-light);
-    transition: transform 0.3s, top 0.3s;
-}
-
-.hamburger::before {
-    top: -8px;
-}
-
-.hamburger::after {
-    top: 8px;
-}
-
-.menu-toggle[aria-expanded="true"] .hamburger {
-    transform: rotate(45deg);
-}
-
-.menu-toggle[aria-expanded="true"] .hamburger::before {
-    top: 0;
-    transform: rotate(90deg);
-}
-
-.menu-toggle[aria-expanded="true"] .hamburger::after {
-    opacity: 0;
-}
-
-.nav-menu {
-    display: none; /* Oculto por defecto en móvil */
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background-color: var(--color-primary);
-    z-index: 999;
-    padding: var(--spacing-lg) 0;
-}
-
-.nav-menu ul {
-    flex-direction: column;
-    gap: var(--spacing-md);
     align-items: center;
+    gap: var(--spacing-md);
+}
+
+header > nav ul {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+header > nav a {
+    color: var(--color-text-light);
+    font-weight: 600;
 }
 
 /* Selectores de tipo: section */
@@ -117,78 +53,106 @@ header nav a + a {
     font-size: 0.95rem;
 }
 
-/* --- Breakpoints --- */
+/* Uso de display: grid para la sección de expositores */
+.expositores-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* 1 column for mobile */
+    gap: var(--spacing-lg);
 
-/* Tablet: >= 768px */
+}
+
+/* Tablet: 2 columns */
 @media (min-width: 768px) {
-    /* Menú siempre visible en tablet y desktop */
-    .menu-toggle {
-        display: none;
-    }
-    .nav-menu {
-        display: flex;
-        position: static;
-        background-color: transparent;
-        padding: 0;
-    }
-    .nav-menu ul {
-        flex-direction: row;
-        gap: var(--spacing-md);
-    }
-    
-    .hero {
-        height: 400px;
-    }
-
-    .container {
-        padding: var(--spacing-md);
-    }
-
-    /* Cards - 2 columnas en tablet */
     .expositores-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .decorative-element {
-        display: none;
-    }
-
-    /* Responsive Typography */
-    h1 {
-        font-size: clamp(2rem, 5vw, 3rem);
+        grid-template-columns: repeat(2, 1fr); /* 2 columns */
     }
 }
 
-/* Desktop: >= 1024px */
+/* Desktop: 3 columns */
 @media (min-width: 1024px) {
-    .hero {
-        height: 500px;
-    }
-
-    .container {
-        padding: var(--spacing-lg);
-    }
-    
-    /* Cards - 3 columnas en desktop */
     .expositores-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    }
+}
+
+/* Estilos de tipo para elementos de tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: var(--spacing-md);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+table, th, td {
+    border: 1px solid #e2e8f0;
+}
+
+th, td {
+    padding: var(--spacing-sm) var(--spacing-md);
+    text-align: left;
+}
+
+/* Selectores de atributo */
+/* Estilo para cualquier enlace que se abra en una nueva pestaña */
+a[target="_blank"] {
+    font-weight: bold;
+    color: var(--color-accent);
+}
+
+/* Estilo para imágenes con el atributo alt */
+img[alt] {
+    border-radius: var(--spacing-sm);
+}
+
+/* Estilo para el input de tipo email */
+input[type="email"] {
+    border: 2px solid var(--color-accent);
+}
+
+/* Estilo para enlaces que empiezan con "https://" */
+a[href^="https://"] {
+    text-decoration: none;
+}
+
+/* layout.css */
+
+/* Hamburger Menu Styles */
+.hamburger-menu {
+    display: block; /* Show on mobile */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--spacing-sm);
+    position: absolute;
+    right: var(--spacing-lg);
+    top: var(--spacing-lg);
+    z-index: 1000;
+}
+
+.hamburger-menu span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--color-text-light);
+    margin: 5px 0;
+    transition: all 0.3s;
+}
+
+header > nav {
+    display: none; /* Hide nav by default on mobile */
+}
+
+header > nav.is-active {
+    display: block; /* Show nav when active */
+}
+
+/* Tablet and Desktop Styles */
+@media (min-width: 768px) {
+    .hamburger-menu {
+        display: none; /* Hide hamburger on larger screens */
     }
 
-    .decorative-element {
-        display: block; /* Visible en desktop */
-        font-size: 3rem;
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        animation: rotate 10s linear infinite;
-    }
-
-    @keyframes rotate {
-        from {
-            transform: rotate(0deg);
-        }
-        to {
-            transform: rotate(360deg);
-        }
+    header > nav {
+        display: flex; /* Show nav as flex on larger screens */
     }
 }

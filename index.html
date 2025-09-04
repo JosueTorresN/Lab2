@@ -1,52 +1,76 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Configuración del documento y metadatos -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="TechFuture 2025 es un evento tecnológico con conferencias, talleres y expertos en innovación, ciberseguridad e inteligencia artificial.">
     <title>TechFuture 2025 - Evento Tecnológico</title>
 
+    <!-- Enlace a los archivos CSS, siguiendo el orden de la rúbrica (base, layout, components, overrides) -->
+    <!-- Se usan enlaces locales como si estuvieran en una carpeta 'styles' -->
     <link rel="stylesheet" href="./styles/base.css">
     <link rel="stylesheet" href="./styles/layout.css">
     <link rel="stylesheet" href="./styles/components.css">
     <link rel="stylesheet" href="./styles/overrides.css">
 
+    <!-- Enlaces para la fuente y Tailwind CSS (para un mejor aspecto visual) -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        const hamburgerMenu = document.querySelector('.hamburger-menu');
+        const mainNav = document.querySelector('#main-nav');
+
+        hamburgerMenu.addEventListener('click', () => {
+            const isExpanded = hamburgerMenu.getAttribute('aria-expanded') === 'true';
+            hamburgerMenu.setAttribute('aria-expanded', !isExpanded);
+            mainNav.classList.toggle('is-active');
+        });
+    </script>
 </head>
 <body>
-    <header class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">TechFuture 2025</h1>
-            <span class="decorative-element" aria-hidden="true" alt="">🚀</span>
-        </div>
-        <nav aria-label="Navegación principal">
-            <button class="menu-toggle" aria-controls="main-menu" aria-expanded="false">
-                <span class="hamburger"></span>
-            </button>
-            <div id="main-menu" class="nav-menu">
-                <ul>
-                    <li><a href="#agenda">Agenda</a></li>
-                    <li><a href="#expositores">Expositores</a></li>
-                    <li><a href="#registro">Registro</a></li>
-                    <li><a href="#ubicacion">Ubicación</a></li>
-                    <li><a href="#patrocinadores">Patrocinadores</a></li>
-                </ul>
-            </div>
+    <header>
+        <h1>TechFuture 2025</h1>
+        <button class="hamburger-menu" aria-label="Toggle menu" aria-expanded="false" aria-controls="main-nav">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav id="main-nav" aria-label="Navegación principal">
+            <ul>
+                <li><a href="#agenda">Agenda</a></li>
+                <li><a href="#expositores">Expositores</a></li>
+                <li><a href="#registro">Registro</a></li>
+                <li><a href="#ubicacion">Ubicación</a></li>
+                <li><a href="#patrocinadores">Patrocinadores</a></li>
+            </ul>
         </nav>
     </header>
 
     <main class="container">
+
+        <section id="hero">
+            <picture>
+                <source media="(min-width: 1024px)" srcset="images/hero-desktop.jpg">
+                <source media="(min-width: 768px)" srcset="images/hero-tablet.jpg">
+                <img src="images/hero-mobile.jpg" alt="A vibrant image of the TechFuture 2025 event" style="width:100%;">
+            </picture>
+        </section>
+        <!-- Uso de ID: #agenda -->
         <section id="agenda">
+            <!-- Selector de tipo: h2 -->
             <h2>Agenda del Evento</h2>
             <p>Descubre las actividades programadas para TechFuture 2025.</p>
+            
             <table>
                 <thead>
                     <tr>
+                        <!-- Uso de :first-child y :last-child en la primera fila -->
                         <th>Hora</th>
                         <th>Actividad</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- Uso de :nth-child(odd) para filas impares -->
                     <tr>
                         <td>09:00</td>
                         <td>Conferencia Inaugural</td>
@@ -57,80 +81,116 @@
                     </tr>
                     <tr>
                         <td>14:00</td>
-                        <td>Taller de Ciberseguridad</td>
-                    </tr>
-                    <tr>
-                        <td>16:00</td>
-                        <td>Presentación de Startups</td>
-                    </tr>
-                    <tr>
-                        <td>18:00</td>
-                        <td>Cóctel de Networking</td>
+                        <td>Taller de Desarrollo Web</td>
                     </tr>
                 </tbody>
             </table>
         </section>
 
+        <!-- Uso de ID: #expositores -->
         <section id="expositores">
-            <h2>Expositores Principales</h2>
+            <!-- Uso de estilo en línea para demostrar la especificidad -->
+            <h2 class="titulo-seccion" style="margin-bottom: 24px;">Expositores</h2>
+            <p>Conoce a los expertos que nos acompañarán.</p>
+            
+            <!-- Uso de display: grid para organizar las tarjetas -->
             <div class="expositores-grid">
-                <div class="card">
-                    <h3>Dr. Sofía Ramos</h3>
-                    <p>Expert in AI ethics and data privacy.</p>
-                </div>
-                <div class="card">
-                    <h3>Ing. Carlos Mena</h3>
-                    <p>Cibersecurity specialist and ethical hacker.</p>
-                </div>
-                <div class="card">
-                    <h3>Lic. Andrea Soto</h3>
-                    <p>Innovator in sustainable technologies.</p>
-                </div>
-                <div class="card">
-                    <h3>Dr. Sofia Ramos</h3>
-                    <p>Expert in AI ethics and data privacy.</p>
-                </div>
-                <div class="card">
-                    <h3>Ing. Carlos Mena</h3>
-                    <p>Cibersecurity specialist and ethical hacker.</p>
-                </div>
-                <div class="card">
-                    <h3>Lic. Andrea Soto</h3>
-                    <p>Innovator in sustainable technologies.</p>
-                </div>
+                <!-- Uso de clase reutilizable: .card -->
+                <article class="card">
+                    <h3>Dra. Ana Pérez Buñiga</h3>
+                    <figure>
+                        <!-- Selector de atributo: img[alt] -->
+                        <img src="expositora1.png" alt="Retrato de la Dra. Ana Pérez, experta en inteligencia artificial">
+                        <figcaption>Especialista en Inteligencia Artificial</figcaption>
+                    </figure>
+                    <blockquote>
+                        "La inteligencia artificial no reemplaza al ser humano, lo potencia."
+                    </blockquote>
+                    <!-- Uso de position: relative para el contenedor y position: absolute para el badge -->
+                    <div class="card-content-wrapper">
+                        <!-- El texto es largo para demostrar overflow -->
+                        <p class="long-text">
+                            La Dra. Ana Pérez Buñiga es una reconocida líder en el campo de la inteligencia artificial. Su investigación se centra en la aplicación de modelos de aprendizaje automático para resolver problemas complejos en la medicina y la biología. Su charla abordará cómo la IA no debe verse como un reemplazo, sino como una herramienta poderosa para potenciar las capacidades humanas y abrir nuevas fronteras de la innovación y la creatividad.
+                        </p>
+                    </div>
+                    <!-- Elemento decorativo para demostrar el uso de !important -->
+                    <span class="badge">Experto TOP</span>
+                </article>
+                <article class="card">
+                    <h3>Ing. Juan Gómez</h3>
+                    <!-- Selector de atributo: img[alt] -->
+                    <img src="expositor2.png" alt="Retrato del Ing. Juan Gómez, experto en ciberseguridad">
+                    <p>Experto en Ciberseguridad y Protección de Datos.</p>
+                </article>
             </div>
         </section>
 
+        <!-- Uso de ID: #registro -->
         <section id="registro">
             <h2>Registro</h2>
-            <p>¡Asegura tu lugar en TechFuture 2025!</p>
-            <button class="btn">Regístrate ahora</button>
+            <p>Inscríbete para asegurar tu lugar en TechFuture 2025.</p>
+            <form action="#" method="post">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="correo">Correo electrónico:</label>
+                <!-- Selector de atributo: input[type="email"] -->
+                <input type="email" id="correo" name="correo" required>
+
+                <label for="tipo">Tipo de entrada:</label>
+                <select id="tipo" name="tipo">
+                    <option value="general">General</option>
+                    <option value="estudiante">Estudiante</option>
+                    <option value="vip">VIP</option>
+                </select>
+
+                <fieldset>
+                    <legend>Intereses:</legend>
+                    <input type="checkbox" id="ia" name="interes" value="ia">
+                    <label for="ia">Inteligencia Artificial</label>
+                    <input type="checkbox" id="web" name="interes" value="web">
+                    <label for="web">Desarrollo Web</label>
+                </fieldset>
+
+                <!-- Uso de clase reutilizable: .btn y pseudo-clases de estado -->
+                <button type="submit" class="btn" aria-label="Enviar formulario de registro">Enviar</button>
+            </form>
         </section>
 
+        <!-- Uso de ID: #ubicacion -->
         <section id="ubicacion">
             <h2>Ubicación</h2>
+            <figure class="ubicacion-imagen">
+                <img src="./centro.webp" alt="Centro de Convenciones de San José">
+                <figcaption>Centro de Convenciones de San José</figcaption>
+            </figure>
+            <p>El evento se llevará a cabo en el Centro de Convenciones de San José.</p>
             <ul class="ubicacion-lista">
                 <li>Dirección: Boulevard principal, San José</li>
                 <li>Transporte público cercano</li>
                 <li>Estacionamiento gratuito</li>
             </ul>
             <p>
-                <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer">
+                <!-- Selector de atributo: a[target="_blank"] y a[href^="https://"] -->
+                <a href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer">
                     Ver en Google Maps
                 </a>
             </p>
         </section>
 
+        <!-- Uso de ID: #patrocinadores -->
         <section id="patrocinadores">
             <h2>Patrocinadores</h2>
             <p>Agradecemos a nuestros aliados:</p>
             <ol>
                 <li>
+                    <!-- TechCorp  -->
                     <figure class="logo">
                         <img src="./tech_corp.png" alt="Logo de TechCorp">
                         <figcaption>TechCorp</figcaption>
                     </figure>
                 </li>
+                <!-- Combinador 'hermanos': li ~ li -->
                 <li>InnovaLabs</li>
                 <li>FutureSoft</li>
             </ol>
@@ -141,7 +201,7 @@
     </main>
 
     <footer>
-        <p>© 2025 TechFuture. Todos los derechos reservados.</p>
+        <p>&copy; 2025 TechFuture. Todos los derechos reservados.</p>
     </footer>
 </body>
 </html>
