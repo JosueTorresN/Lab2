@@ -35,19 +35,11 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: var(--spacing-lg);
     margin: var(--spacing-md) 0;
-    /* Demostración de colapso de márgenes: h2 con margin-bottom seguido de .card con margin-top */
-    margin-top: var(--spacing-lg);
-    position: relative; /* Contenedor para el position: absolute */
+    /* Buen interlineado y espaciado */
+    line-height: 1.6;
 }
 
-.card img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    margin-bottom: var(--spacing-sm);
-}
-
-/* 4. Pseudo-clases estructurales en la tabla de agenda */
+/* Pseudo-clases estructurales en la tabla de agenda */
 #agenda table tbody tr:nth-child(odd) {
     background-color: #edf2f7;
 }
@@ -79,28 +71,4 @@
     border: 1px solid #ccc;
     padding: var(--spacing-sm);
     background-color: #f0f4f8;
-}
-
-/* Selector :first-child en la lista de patrocinadores */
-#patrocinadores ol li:first-child {
-    font-weight: bold;
-    color: var(--color-accent);
-}
-
-/* Selector :last-child en la tabla de agenda */
-#agenda table tr:last-child {
-    font-weight: bold;
-    background-color: #bee3f8;
-}
-
-.logo {
-    text-align: center;
-    margin-top: var(--spacing-sm);
-    height: 150px;
-    width: 150px;
-    margin-bottom: 50px;
-}
-
-.ubicacion-imagen {
-    margin-bottom: 15px;
 }

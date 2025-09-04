@@ -51,39 +51,21 @@ a:hover {
 ul, ol {
     margin: 0;
     padding: 0;
-    list-style-type: none;
+    list-style: none;
 }
 
-@media (max-width: 768px) {
-    html {
-        font-size: 15px;
-    }
+li {
+    margin-bottom: var(--spacing-sm);
 }
 
-@media (max-width: 480px) {
-    html {
-        font-size: 14px;
-    }
+/* Contenedor principal para centrar el contenido */
+.container {
+    max-width: 90%;
+    margin: 0 auto;
+    padding: var(--spacing-sm);
 }
 
-/* 5. Responsive Body Padding */
-body {
-    background-color: var(--color-text-light);
-    color: var(--color-primary);
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-
-    padding: var(--spacing-md);
-}
-
-@media (max-width: 480px) {
-    body {
-        padding: var(--spacing-sm);
-    }
-}
-
-/* 6. Responsive Headings */
+/* 5. Responsive Headings */
 h1 {
     font-size: 2.5rem;
 }
@@ -103,65 +85,16 @@ h6 {
     font-size: 0.875rem;
 }
 
-@media (max-width: 480px) {
-    h1 {
-        font-size: 2rem;
-    }
-    h2 {
-        font-size: 1.5rem;
-    }
-    h3 {
-        font-size: 1.25rem;
-    }
-    h4 {
-        font-size: 1.1rem;
-    }
-    h5 {
-        font-size: 0.95rem;
-    }
-    h6 {
-        font-size: 0.85rem;
-    }
-}
-
-/* 7. Responsive Images and Media */
+/* 6. Responsive Images and Media */
 img, video, iframe {
     max-width: 100%;
     height: auto;
     display: block;
 }
 
-/* 8. Responsive Lists */
-ul, ol {
-    padding-left: var(--spacing-md);
-}
-
-@media (max-width: 480px) {
-    ul, ol {
-        padding-left: var(--spacing-sm);
-    }
-}
-
-/* 9. Responsive Containers (utility class) */
-.container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding-left: var(--spacing-lg);
-    padding-right: var(--spacing-lg);
-}
-
-@media (max-width: 768px) {
-    .container {
-        max-width: 100%;
-        padding-left: var(--spacing-md);
-        padding-right: var(--spacing-md);
-    }
-}
-
-@media (max-width: 480px) {
-    .container {
-        padding-left: var(--spacing-sm);
-        padding-right: var(--spacing-sm);
-    }
+/* Responsive tables to avoid horizontal scroll */
+table {
+    max-width: 100%;
+    overflow-x: auto;
+    display: block;
 }
