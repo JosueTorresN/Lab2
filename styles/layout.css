@@ -156,3 +156,91 @@ header > nav.is-active {
         display: flex; /* Show nav as flex on larger screens */
     }
 }
+
+/* layout.css o hero.css */
+
+/* --- Hero Section Styles --- */
+.hero-section {
+    position: relative; /* Para posicionar el contenido sobre la imagen */
+    width: 100%;
+    height: 70vh; /* Altura del hero, ajusta según necesidad */
+    overflow: hidden; /* Asegura que la imagen no se salga */
+    display: flex;
+    align-items: center; /* Centra verticalmente el contenido */
+    justify-content: center; /* Centra horizontalmente el contenido */
+    text-align: center; /* Centra el texto */
+    color: var(--color-text-light); /* Color de texto claro */
+}
+
+.hero-section img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cubre el área manteniendo la relación de aspecto */
+    z-index: 1; /* Para que la imagen esté detrás del contenido */
+    filter: brightness(0.5); /* Oscurece la imagen para mejorar la legibilidad del texto */
+}
+
+.hero-content {
+    position: relative; /* Para que el contenido esté sobre la imagen */
+    z-index: 2; /* Mayor que la imagen */
+    padding: var(--spacing-lg);
+    max-width: 800px; /* Ancho máximo para el contenido textual */
+    margin: 0 auto; /* Centrar el bloque de contenido */
+}
+
+.hero-content h2 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem); /* Título responsivo */
+    margin-bottom: var(--spacing-md);
+    line-height: 1.2;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra para el texto del título */
+}
+
+.hero-content p {
+    font-size: clamp(1rem, 2.5vw, 1.5rem); /* Párrafo responsivo */
+    margin-bottom: var(--spacing-xl);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Sombra para el texto del párrafo */
+}
+
+/* Botón del Hero (asegúrate de que tus estilos base para botones existan) */
+.hero-content .btn {
+    display: inline-block;
+    padding: var(--spacing-md) var(--spacing-xl);
+    background-color: var(--color-primary); /* Color principal de tu paleta */
+    color: var(--color-text-light);
+    text-decoration: none;
+    border-radius: var(--border-radius-sm);
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.hero-content .btn:hover {
+    background-color: var(--color-primary-dark); /* Un tono más oscuro al pasar el ratón */
+}
+
+
+/* --- Media Queries for Responsive Adjustments --- */
+
+/* Tablet adjustments */
+@media (min-width: 768px) {
+    .hero-section {
+        height: 80vh; /* Mayor altura en tablet */
+    }
+}
+
+/* Desktop adjustments */
+@media (min-width: 1024px) {
+    .hero-section {
+        height: 90vh; /* Aún mayor altura en desktop para un impacto máximo */
+    }
+
+    .hero-content h2 {
+        font-size: 5rem; /* Tamaño fijo en desktop para h2 */
+    }
+
+    .hero-content p {
+        font-size: 1.6rem; /* Tamaño fijo en desktop para p */
+    }
+}
