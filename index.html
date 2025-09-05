@@ -202,12 +202,11 @@
 
 <script>
     const hamburgerMenu = document.querySelector('.hamburger-menu');
-    const mainNav = document.querySelector('#main-nav');
+    const navMenu = document.querySelector('header > nav');
 
     hamburgerMenu.addEventListener('click', () => {
-        const isExpanded = hamburgerMenu.getAttribute('aria-expanded') === 'true';
-        hamburgerMenu.setAttribute('aria-expanded', !isExpanded);
-        mainNav.classList.toggle('is-active');
+        navMenu.classList.toggle('is-active');
+        hamburgerMenu.classList.toggle('is-active'); // También togglea la clase en el botón
     });
 </script>
 </html>

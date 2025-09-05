@@ -8,16 +8,35 @@ header {
 }
 
 header > nav {
-    display: none; /* Oculto en mobile */
+    position: absolute;
+    top: 60px; /* justo debajo del header */
+    right: var(--spacing-lg);
+    width: 200px; /* ancho pequeño */
+    background-color: var(--color-primary);
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition: all 0.3s ease-in-out;
+
+    z-index: 999;
 }
 
 header > nav.is-active {
-    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
 }
 
 header > nav ul {
     display: flex;
-    gap: var(--spacing-md);
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    margin: 0;
+    list-style: none;
 }
 
 header > nav.is-active ul {
@@ -28,13 +47,22 @@ header > nav.is-active ul {
 
 header > nav a {
     color: var(--color-text-light);
+    text-decoration: none;
     font-weight: 600;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius-sm);
+    transition: background-color 0.2s;
+
 }
 
 /* Nav enlaces separados por línea */
 header nav a + a {
-    padding-left: var(--spacing-sm);
-    border-left: 1px solid var(--color-secondary);
+    border-left: none;
+    padding-left: 0;
+}
+
+header > nav a:hover {
+    background-color: var(--color-accent);
 }
 
 /* Secciones */
@@ -138,7 +166,20 @@ input[type="email"] {
     height: 3px;
     background-color: var(--color-text-light);
     margin: 5px 0;
-    transition: all 0.3s;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+/* Animación de la hamburguesa para convertirse en "X" */
+.hamburger-menu.is-active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger-menu.is-active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.is-active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
 }
 
 @media (min-width: 768px) {
@@ -146,11 +187,32 @@ input[type="email"] {
         display: none;
     }
 
+    /* Resetea los estilos del nav para la vista de escritorio */
     header > nav {
+        position: static;
+        transform: none;
+        opacity: 1;
+        pointer-events: all;
         display: flex;
-        justify-content: center;
-        align-items: center;
+        height: auto;
+        width: auto;
+        background-color: transparent;
+        z-index: auto;
+    }
+
+    header > nav ul {
+        flex-direction: row;
         gap: var(--spacing-md);
+    }
+    
+    header > nav a {
+        font-size: 1rem; /* Restaura tamaño de fuente */
+        padding: 0;
+    }
+    
+    header nav a + a {
+        padding-left: var(--spacing-sm);
+        border-left: 1px solid var(--color-secondary);
     }
 }
 
