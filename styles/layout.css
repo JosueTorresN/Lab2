@@ -1,18 +1,18 @@
-/* Selectores de tipo: header y nav */
+/* Header */
 header {
     background-color: var(--color-primary);
     padding: var(--spacing-lg);
     color: var(--color-text-light);
     text-align: center;
+    position: relative;
 }
 
-/* Combinador 'hijo directo': header > nav */
-/* Se aplica flexbox para centrar y espaciar los elementos del nav */
 header > nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: var(--spacing-md);
+    display: none; /* Oculto en mobile */
+}
+
+header > nav.is-active {
+    display: block;
 }
 
 header > nav ul {
@@ -20,62 +20,42 @@ header > nav ul {
     gap: var(--spacing-md);
 }
 
+header > nav.is-active ul {
+    flex-direction: column; /* Apila los elementos verticalmente */
+    align-items: center;    /* Centra los elementos */
+    padding-top: var(--spacing-lg); /* Añade espacio superior */
+}
+
 header > nav a {
     color: var(--color-text-light);
     font-weight: 600;
 }
 
-/* Selectores de tipo: section */
-section {
-    padding: var(--spacing-lg);
-    max-width: 900px;
-    margin: var(--spacing-lg) auto;
-}
-
-/* Selectores combinadores */
-/* Combinador 'adyacente': nav a + a */
-/* Estilos para todos los enlaces del nav que son precedidos por otro enlace a */
+/* Nav enlaces separados por línea */
 header nav a + a {
     padding-left: var(--spacing-sm);
     border-left: 1px solid var(--color-secondary);
 }
 
-/* Combinador 'hermanos': li ~ li */
-/* Estilos para todos los elementos li que son precedidos por otro li */
+/* Secciones */
+section {
+    padding: var(--spacing-lg);
+    max-width: 900px;
+    margin: var(--spacing-lg) auto; /* Ya está centrado horizontal */
+    text-align: center; /* Centra el texto */
+}
+
+/* Patrocinadores */
+#patrocinadores ol li:first-child {
+    font-weight: bold;
+    color: var(--color-accent);
+}
+
 #patrocinadores ol li ~ li {
     margin-top: var(--spacing-sm);
 }
 
-/* Combinador 'descendiente': .card p */
-/* Estilos para todos los párrafos dentro de un elemento con la clase .card */
-.card p {
-    color: var(--color-secondary);
-    font-size: 0.95rem;
-}
-
-/* Uso de display: grid para la sección de expositores */
-.expositores-grid {
-    display: grid;
-    grid-template-columns: 1fr; /* 1 column for mobile */
-    gap: var(--spacing-lg);
-
-}
-
-/* Tablet: 2 columns */
-@media (min-width: 768px) {
-    .expositores-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns */
-    }
-}
-
-/* Desktop: 3 columns */
-@media (min-width: 1024px) {
-    .expositores-grid {
-        grid-template-columns: repeat(3, 1fr); /* 3 columns */
-    }
-}
-
-/* Estilos de tipo para elementos de tabla */
+/* Tablas */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -84,7 +64,7 @@ table {
 }
 
 table, th, td {
-    border: 1px solid #e2e8f0;
+    border: 1px solid var(--color-border);
 }
 
 th, td {
@@ -92,33 +72,56 @@ th, td {
     text-align: left;
 }
 
+/* Agenda */
+#agenda table tbody tr:nth-child(odd) {
+    background-color: #edf2f7;
+}
+
+#agenda table tr:last-child {
+    font-weight: bold;
+    background-color: #bee3f8;
+}
+
 /* Selectores de atributo */
-/* Estilo para cualquier enlace que se abra en una nueva pestaña */
 a[target="_blank"] {
     font-weight: bold;
     color: var(--color-accent);
 }
 
-/* Estilo para imágenes con el atributo alt */
-img[alt] {
-    border-radius: var(--spacing-sm);
-}
-
-/* Estilo para el input de tipo email */
-input[type="email"] {
-    border: 2px solid var(--color-accent);
-}
-
-/* Estilo para enlaces que empiezan con "https://" */
 a[href^="https://"] {
     text-decoration: none;
 }
 
-/* layout.css */
+img[alt] {
+    border-radius: var(--spacing-sm);
+}
 
-/* Hamburger Menu Styles */
+input[type="email"] {
+    border: 2px solid var(--color-accent);
+}
+
+/* Expositores grid */
+.expositores-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+}
+
+@media (min-width: 768px) {
+    .expositores-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .expositores-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Hamburger Menu */
 .hamburger-menu {
-    display: block; /* Show on mobile */
+    display: block;
     background: none;
     border: none;
     cursor: pointer;
@@ -138,109 +141,99 @@ a[href^="https://"] {
     transition: all 0.3s;
 }
 
-header > nav {
-    display: none; /* Hide nav by default on mobile */
-}
-
-header > nav.is-active {
-    display: block; /* Show nav when active */
-}
-
-/* Tablet and Desktop Styles */
 @media (min-width: 768px) {
     .hamburger-menu {
-        display: none; /* Hide hamburger on larger screens */
+        display: none;
     }
 
     header > nav {
-        display: flex; /* Show nav as flex on larger screens */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: var(--spacing-md);
     }
 }
 
-/* layout.css o hero.css */
-
-/* --- Hero Section Styles --- */
+/* Hero */
 .hero-section {
-    position: relative; /* Para posicionar el contenido sobre la imagen */
+    position: relative;
     width: 100%;
-    height: 70vh; /* Altura del hero, ajusta según necesidad */
-    overflow: hidden; /* Asegura que la imagen no se salga */
+    height: 70vh;
+    overflow: hidden;
     display: flex;
-    align-items: center; /* Centra verticalmente el contenido */
-    justify-content: center; /* Centra horizontalmente el contenido */
-    text-align: center; /* Centra el texto */
-    color: var(--color-text-light); /* Color de texto claro */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--color-text-light);
 }
 
+.hero-section picture,
 .hero-section img {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 0; left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Cubre el área manteniendo la relación de aspecto */
-    z-index: 1; /* Para que la imagen esté detrás del contenido */
-    filter: brightness(0.5); /* Oscurece la imagen para mejorar la legibilidad del texto */
+    object-fit: cover;
+    z-index: 1;
+    filter: brightness(0.5);
 }
 
 .hero-content {
-    position: relative; /* Para que el contenido esté sobre la imagen */
-    z-index: 2; /* Mayor que la imagen */
+    position: relative;
+    z-index: 2;
     padding: var(--spacing-lg);
-    max-width: 800px; /* Ancho máximo para el contenido textual */
-    margin: 0 auto; /* Centrar el bloque de contenido */
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .hero-content h2 {
-    font-size: clamp(2.5rem, 6vw, 4.5rem); /* Título responsivo */
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
     margin-bottom: var(--spacing-md);
     line-height: 1.2;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra para el texto del título */
+    text-shadow: 2px 2px 4px var(--color-text-light);
+    color: var(--color-text-light);
 }
 
 .hero-content p {
-    font-size: clamp(1rem, 2.5vw, 1.5rem); /* Párrafo responsivo */
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
     margin-bottom: var(--spacing-xl);
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Sombra para el texto del párrafo */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-/* Botón del Hero (asegúrate de que tus estilos base para botones existan) */
 .hero-content .btn {
-    display: inline-block;
     padding: var(--spacing-md) var(--spacing-xl);
-    background-color: var(--color-primary); /* Color principal de tu paleta */
-    color: var(--color-text-light);
-    text-decoration: none;
     border-radius: var(--border-radius-sm);
     font-weight: bold;
-    transition: background-color 0.3s ease;
 }
 
 .hero-content .btn:hover {
-    background-color: var(--color-primary-dark); /* Un tono más oscuro al pasar el ratón */
+    background-color: var(--color-accent-dark);
 }
 
-
-/* --- Media Queries for Responsive Adjustments --- */
-
-/* Tablet adjustments */
+/* Hero Responsive */
 @media (min-width: 768px) {
     .hero-section {
-        height: 80vh; /* Mayor altura en tablet */
+        height: 80vh;
     }
 }
 
-/* Desktop adjustments */
 @media (min-width: 1024px) {
     .hero-section {
-        height: 90vh; /* Aún mayor altura en desktop para un impacto máximo */
+        height: 90vh;
     }
 
     .hero-content h2 {
-        font-size: 5rem; /* Tamaño fijo en desktop para h2 */
+        font-size: 5rem;
     }
 
     .hero-content p {
-        font-size: 1.6rem; /* Tamaño fijo en desktop para p */
+        font-size: 1.6rem;
     }
+}
+
+.titulo-seccion {
+    font-size: clamp(2rem, 7vw, 3rem);
+    margin-bottom: var(--spacing-md);
+    color: var(--color-primary);
+    text-align: center;
 }

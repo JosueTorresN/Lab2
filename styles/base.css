@@ -1,37 +1,47 @@
 html {
     box-sizing: border-box;
     scroll-behavior: smooth;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
 }
 
-*, *:before, *:after {
+*, *::before, *::after {
     box-sizing: inherit;
 }
 
-/* 2. Variables CSS (propiedades personalizadas) */
+/* Variables globales */
 :root {
-    --color-primary: #1a202c; /* Negro carbón */
-    --color-secondary: #4a5568; /* Gris oscuro */
-    --color-accent: #3182ce; /* Azul vibrante */
-    --color-text-light: #f7fafc; /* Blanco casi total */
+    --color-primary: #1a202c;        /* Negro carbón */
+    --color-secondary: #4a5568;      /* Gris oscuro */
+    --color-accent: #3182ce;         /* Azul vibrante */
+    --color-accent-dark: #2b6cb0;    /* Azul hover */
+    --color-text-light: #f7fafc;     /* Blanco casi total */
+    --color-background: #ffffff;     /* Fondo claro */
+    --color-border: #e2e8f0;         /* Bordes */
+    
     --font-heading: 'Inter', sans-serif;
     --font-body: 'Inter', sans-serif;
+
     --spacing-xs: 4px;
     --spacing-sm: 8px;
     --spacing-md: 16px;
     --spacing-lg: 24px;
+    --spacing-xl: 32px;
+
+    --border-radius-sm: 6px;
+    --border-radius-md: 12px;
 }
 
-/* 3. Estilos básicos del cuerpo y tipografía */
+/* Tipografía base */
 body {
     background-color: var(--color-text-light);
     color: var(--color-primary);
+    font-family: var(--font-body);
     line-height: 1.6;
     margin: 0;
     padding: 0;
 }
 
-/* Selectores de tipo */
+/* Encabezados */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
     color: var(--color-primary);
@@ -39,64 +49,50 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: var(--spacing-md);
 }
 
+h1 {
+    color: var(--color-text-light);
+}
+
+.title {
+    font-size: clamp(1.5rem, 8vw, 5rem);
+}
+
 p {
     margin-top: 0;
     margin-bottom: var(--spacing-md);
+    font-size: clamp(1rem, 2vw, 1.2rem);
 }
 
+/* Enlaces */
 a {
     color: var(--color-accent);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
-a:hover {
+a:hover,
+a:focus-visible {
     text-decoration: underline;
+    outline: none;
 }
 
-/* Reseteo ligero para listas */
+/* Listas */
 ul, ol {
     margin: 0;
     padding: 0;
-    list-style-type: none;
+    list-style: none;
 }
 
-img, iframe, table {
+/* Imágenes, iframes y tablas */
+img, iframe {
     max-width: 100%;
     height: auto;
+    display: block;
 }
 
-/* To make the table responsive, you might need to adjust its display on smaller screens */
-@media (max-width: 480px) {
-    table, thead, tbody, th, td, tr {
-        display: block;
-    }
-
-    thead tr {
-        position: absolute;
-        top: -9999px;
-        left: -9999px;
-    }
-
-    tr { border: 1px solid #ccc; }
-
-    td {
-        border: none;
-        border-bottom: 1px solid #eee;
-        position: relative;
-        padding-left: 50%;
-    }
-
-    td:before {
-        position: absolute;
-        top: 6px;
-        left: 6px;
-        width: 45%;
-        padding-right: 10px;
-        white-space: nowrap;
-    }
-
-    /* Labeling the table data */
-    #agenda td:nth-of-type(1):before { content: "Hora"; }
-    #agenda td:nth-of-type(2):before { content: "Actividad"; }
+/* Contenedor global centrado */
+.container {
+    max-width: 1200px;
+    margin: 0 auto; /* Centra horizontalmente */
+    padding: 0 var(--spacing-md); /* Espaciado lateral para que no pegue a los bordes */
 }
